@@ -1,0 +1,28 @@
+'use strict'
+
+const Processo = use('App/Validators/Processo')
+
+class StoreProcesso extends Processo {
+
+  get rules() {
+
+    return {
+      ...super.rules,
+      ano: super.rules.ano += '|integer|range:1900,2100'
+    }
+
+  }
+
+
+  get messages() {
+    return {
+      ...super.messages,
+      'ano.integer': 'Field Year must be an integer',
+      'ano.range': 'Field Year must be between 1900 and 2100'
+    }
+  }
+
+
+}
+
+module.exports = StoreProcesso

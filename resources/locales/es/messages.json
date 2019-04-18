@@ -1,0 +1,18 @@
+{
+  "process.store": "Proceso {id} creado cón exito",
+  "process.update": "Proceso {id} actualizado cón exito",
+  "process.index": "Listado de procesos {count} retornado cón exito",
+  "process.show": "Proceso {id} cargado cón exito",
+  "process.destroy": "Proceso {id} borrado cón exito",
+
+  "fase.store": "Etapa {id} creada cón exito",
+  "fase.update": "Etapa {id} actualizada cón exito",
+  "fase.index": "Listado de etapas {count} retornado cón exito",
+  "fase.show": "Etapa {id} cargada cón exito",
+  "fase.destroy": "Etapa {id} borrada cón exito",
+
+  "user.switchLang": "Idioma para usuário {userid} cambiado con exito para { lang }",
+  "user.create": "Usuário {id} registrado con éxito",
+  "user.index": "Listado de usuarios retornado cón exito"
+
+}

@@ -1,0 +1,19 @@
+{
+
+  "process.store": "Process {id} created successfuly",
+  "process.update": "Process {id} updated successfuly",
+  "process.index": "List of processes {count} loaded successfuly",
+  "process.show": "Process {id} loaded successfuly",
+  "process.destroy": "Process {id} deleted successfuly",
+
+  "fase.store": "Phase {id} created successfuly",
+  "fase.update": "Phase {id} updated successfuly",
+  "fase.index": "List of phases {count} loaded successfuly",
+  "fase.show": "Phase {id} loaded successfuly",
+  "fase.destroy": "Phase {id} deleted successfuly",
+
+  "user.switchLang": "Default language for user {userid} switched sucessfully to { lang }",
+  "user.create": "User {id} registered sucessfully",
+  "user.index": "List of users loaded successfuly"
+
+}

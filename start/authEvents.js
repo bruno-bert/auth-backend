@@ -1,0 +1,2 @@
+require('./userCreatedEvent')
+require('./forgotPasswordEvent')
