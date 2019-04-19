@@ -94,5 +94,14 @@ module.exports = {
 
   activationRequired: true,
   requiresStrongPassword: true,
+
+  passwordRules: {
+    allowPassphrases: true,
+    maxLength: 50,
+    minLength: 8,
+    minPhraseLength: 20,
+    minOptionalTestsToPass: 4,
+  },
+
   accountActivationRoute: 'account/activate'
 }

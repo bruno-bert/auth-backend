@@ -1,9 +1,8 @@
+const ValidationError = require('../../errors/ValidationError')
 const User = use("App/Models/User")
 const Persona = use("Persona")
 const Config = use('Config')
 const owasp = require('owasp-password-strength-test')
-const ValidationError = use("Errors/ValidationError")
-//const ValidationError = require('../../errors/ValidationError')
 
 const uuidv1 = require("uuid/v1")
 
@@ -28,7 +27,12 @@ class UserService {
 
   }
 
+  registerPasswordRules() {
+    owasp.config(Config.get('auth.passwordRules'))
+  }
+
   async validatePassword(password) {
+    this.registerPasswordRules()
     return owasp.test(password)
   }
 

@@ -1,11 +1,7 @@
-const {
-  GraphQLError
-} = require('graphql')
-
 const UserService = use('App/Services/UserService')
 
 const schema = `
-validatePassword (password: String!): String
+validatePassword (password: String!): PasswordValidationResult!
 `
 const resolver = {
 
@@ -13,11 +9,7 @@ const resolver = {
     password
   }) {
 
-    try {
-      return await UserService.validatePassword(password)
-    } catch (error) {
-      throw new GraphQLError(error.messages)
-    }
+    return await UserService.validatePassword(password)
 
   }
 

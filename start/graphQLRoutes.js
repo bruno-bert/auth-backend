@@ -12,6 +12,7 @@ Route.route('/graphql', ({
     context: {
       auth
     }
+
   }, request, response)
 }, ['GET', 'POST'])
 
