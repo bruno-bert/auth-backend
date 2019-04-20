@@ -1,6 +1,6 @@
 'use strict'
 
-const UserService = use('App/Services/UserService')
+const AuthService = use('App/Services/AuthService')
 
 class AuthController {
 
@@ -9,7 +9,7 @@ class AuthController {
     response
   }) {
 
-    const result = await UserService.activate({
+    const result = await AuthService.activate({
       token: request.input('token')
     })
 

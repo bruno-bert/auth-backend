@@ -9,17 +9,6 @@ const Hash = use('Hash')
 class User extends Model {
 
 
-
-  static get createdAtColumn() {
-    return 'createdAt'
-  }
-
-  static get updatedAtColumn() {
-    return 'updatedAt'
-  }
-
-
-
   static boot() {
     super.boot()
 

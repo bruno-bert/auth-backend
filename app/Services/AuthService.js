@@ -99,7 +99,7 @@ class AuthService {
         rules.push('email')
       }
 
-      rules.push(`unique:${this.getTable()},${uid}`)
+      rules.push(`unique:${this._getTable()},${uid}`)
 
       result[uid] = rules.join('|')
 
@@ -116,7 +116,7 @@ class AuthService {
 
 
   _getTable() {
-    return this.getModel().table
+    return this._getModel().table
   }
 
   async generateToken(user, type) {
@@ -144,7 +144,7 @@ class AuthService {
     }
 
     return {
-      [this.config.email]: `required|email|unique:${this.getTable()},${this.config.email},${this.getModel().primaryKey},${userId}`
+      [this.config.email]: `required|email|unique:${this._getTable()},${this.config.email},${this._getModel().primaryKey},${userId}`
     }
   }
 
@@ -215,7 +215,7 @@ class AuthService {
   }
 
   async verifyEmail(token) {
-    const tokenRow = await this._getToken(token, 'email')
+    const tokenRow = await this.getToken(token, 'email')
 
     if (!tokenRow) {
       throw InvalidTokenException.invalidToken()
@@ -399,6 +399,12 @@ class AuthService {
     return token
 
   }
+
+  async removeToken(token, type) {
+    const query = this._getModel().prototype.tokens().RelatedModel.query()
+    await query.where('token', token).where('type', type).delete()
+  }
+
 
   async getToken(token, type) {
     const query = this._getModel().prototype.tokens().RelatedModel.query()

@@ -48,8 +48,7 @@ const resolver = {
 
     } catch (error) {
 
-      if (error.messages)
-        throw new GraphQLError(error.messages)
+      throw new GraphQLError(error.message || error.messages)
 
     }
 
