@@ -93,6 +93,8 @@ module.exports = {
   },
 
   activationRequired: true,
+  accountActivationRoute: 'account/activate',
+
   requiresStrongPassword: true,
 
   passwordRules: {
@@ -103,5 +105,45 @@ module.exports = {
     minOptionalTestsToPass: 4,
   },
 
-  accountActivationRoute: 'account/activate'
+  loginRules() {
+    return {
+      'uid': 'required',
+      [this.config.password]: 'required',
+      [this.config.status]: 'active'
+    }
+  },
+
+
+
+  uids: ['email'],
+  email: 'email',
+  password: 'importHash',
+  newAccountState: 'pending',
+  verifiedAccountState: 'active',
+  model: 'App/Models/User',
+  dateFormat: 'YYYY-MM-DD HH:mm:ss',
+  blocked: 'disabled',
+  status: 'account_status',
+
+  validationMessages: () => {
+    return {
+      "uid.required": "E-mail must be filled.",
+      "email.required": "E-mail must be filled.",
+      "email.email": "Please use a valid e-mail address.",
+      "password.required": "Password must be filled.",
+      "password.mis_match": "Invalid password.",
+      "password_confirmation.same": `Password confirmation must be same as password.`,
+      "account_status": "Activation is pending"
+    }
+  },
+
+  validationRules: {
+    registration: {
+      email: "required|email",
+      password: "required",
+      password_confirmation: "required|same:password"
+    }
+  },
+
+
 }

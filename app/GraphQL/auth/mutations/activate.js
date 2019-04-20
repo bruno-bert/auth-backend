@@ -1,22 +1,24 @@
 //const ForbiddenError = require('../../../errors/forbiddenError')
 
 const AuthService = use('App/Services/AuthService')
-
 const schema = `
- allUsers: [User]
+  activate (token: String!): User
 `
 const resolver = {
 
-  // Get a user by its ID
-  async fetchUser(_, {
-    id
+  async activate(_, {
+    token
   }) {
-    const user = await AuthService.find(id)
-    return user.toJSON()
-  },
 
+    return await AuthService.activate({
+      token
+    })
+
+
+  }
 
 }
+
 
 
 exports.schema = schema

@@ -1,4 +1,4 @@
-const UserService = use('App/Services/UserService')
+const AuthService = use('App/Services/AuthService')
 
 const schema = `
 validatePassword (password: String!): PasswordValidationResult!
@@ -9,7 +9,7 @@ const resolver = {
     password
   }) {
 
-    return await UserService.validatePassword(password)
+    return await AuthService.validatePassword(password)
 
   }
 

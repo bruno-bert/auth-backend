@@ -9,4 +9,5 @@ module.exports = [
   require('./login'),
   require('./registerUser'),
   require('./validatePassword'),
+  require('./activate'),
 ]

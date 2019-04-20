@@ -1,5 +1,4 @@
-  //const ForbiddenError = require('../../../errors/forbiddenError')
-  const UserService = use('App/Services/UserService')
+  const AuthService = use('App/Services/AuthService')
 
   const schema = `
   fetchUser(id: Int!): User
@@ -8,7 +7,7 @@
 
     // Fetch all users
     async allUsers() {
-      const users = await UserService.index()
+      const users = await AuthService.index()
       return users.toJSON()
     },
 

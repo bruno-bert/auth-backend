@@ -1,10 +1,14 @@
-//const ForbiddenError = require('../../../errors/forbiddenError')
+const {
+  GraphQLError
+} = require('graphql')
 
+const AuthService = use('App/Services/AuthService')
 
 const schema = `
-  login (email: String!, password: String!): String
+  login (email: String!, password: String!): String!
 `
 const resolver = {
+
 
   async login(_, {
     email,
@@ -12,14 +16,19 @@ const resolver = {
   }, {
     auth
   }) {
-    const {
-      token
-    } = await auth
-      .withRefreshToken()
-      .attempt(email, password)
 
+    try {
+      return await AuthService.login({
+        email,
+        password
+      }, auth)
+    } catch (error) {
 
-    return token
+      if (error.messages)
+        throw new GraphQLError(error.messages)
+
+    }
+
   }
 
 }

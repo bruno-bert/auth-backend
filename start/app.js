@@ -20,8 +20,7 @@ const providers = [
   '@adonisjs/antl/providers/AntlProvider',
   '@adonisjs/framework/providers/ViewProvider',
   '@adonisjs/mail/providers/MailProvider',
-  'adonis-apollo-server/providers/ApolloServerProvider',
-  '@adonisjs/persona/providers/PersonaProvider',
+  'adonis-apollo-server/providers/ApolloServerProvider'
 ]
 
 /*

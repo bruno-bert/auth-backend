@@ -2,7 +2,7 @@ const {
   GraphQLError
 } = require('graphql')
 
-const UserService = use('App/Services/UserService')
+const AuthService = use('App/Services/AuthService')
 
 
 const schema = `
@@ -36,7 +36,7 @@ const resolver = {
     try {
 
 
-      return await UserService.register({
+      return await AuthService.register({
         email,
         importHash: password,
         importHash_confirmation: password_confirmation,
