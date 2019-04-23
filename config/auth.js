@@ -97,24 +97,6 @@ module.exports = {
 
   requiresStrongPassword: true,
 
-  passwordRules: {
-    allowPassphrases: true,
-    maxLength: 50,
-    minLength: 8,
-    minPhraseLength: 20,
-    minOptionalTestsToPass: 4,
-  },
-
-  loginRules() {
-    return {
-      'uid': 'required',
-      [this.config.password]: 'required',
-      [this.config.status]: 'active'
-    }
-  },
-
-
-
   uids: ['email'],
   email: 'email',
   password: 'importHash',
@@ -125,25 +107,45 @@ module.exports = {
   blocked: 'disabled',
   status: 'account_status',
 
-  validationMessages: () => {
-    return {
-      "uid.required": "E-mail must be filled.",
-      "email.required": "E-mail must be filled.",
-      "email.email": "Please use a valid e-mail address.",
-      "password.required": "Password must be filled.",
-      "password.mis_match": "Invalid password.",
-      "password_confirmation.same": `Password confirmation must be same as password.`,
-      "account_status": "Activation is pending"
-    }
-  },
+
 
   validationRules: {
     registration: {
       email: "required|email",
       password: "required",
       password_confirmation: "required|same:password"
+    },
+    login: {
+      email: 'required',
+      password: 'required',
+      account_status: 'required|equals:active',
+      disabled: 'required|equals:false'
+    },
+    password: {
+      allowPassphrases: true,
+      maxLength: 50,
+      minLength: 8,
+      minPhraseLength: 20,
+      minOptionalTestsToPass: 4,
+    },
+  },
+
+  validationMessages: () => {
+    return {
+      "uid.exists": "User does not exists",
+      "uid.required": "E-mail must be filled.",
+      "email.required": "E-mail must be filled.",
+      "email.email": "Please use a valid e-mail address.",
+      "password.required": "Password must be filled.",
+      "password.mis_match": "Invalid password.",
+      "password_confirmation.same": `Password confirmation must be same as password.`,
+      "disabled.required": "User status is required",
+      "account_status.required": "Account status is required",
+      "account_status.equals": "Activation is pending",
+      "disabled.equals": "User is blocked"
     }
   },
+
 
 
 }
